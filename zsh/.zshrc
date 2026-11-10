@@ -122,3 +122,16 @@ export EZA_COLORS="di=38;2;217;149;166:ln=38;2;145;185;181:ex=38;2;168;185;154:*
 if command -v starship >/dev/null 2>&1; then
     eval "$(starship init zsh)"
 fi
+# Dotfiles Git workflow
+dotpush() {
+    (
+        cd ~/dotfiles || return
+
+        git status
+        git diff
+
+        git add . &&
+        git commit -m "${1:-Updating config}" &&
+        git push
+    )
+}

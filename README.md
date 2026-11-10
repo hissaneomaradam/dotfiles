@@ -1,296 +1,268 @@
 # ✿ Dotfiles
 
-My personal Linux development environment, managed with **Git** and **GNU Stow**.
+My personal Linux development environment, managed with Git and shared between my Ubuntu WSL laptop and 1337 school computer.
 
-A collection of configurations designed for a clean, minimal, and personalized terminal and Neovim experience.
+The goal is to keep my terminal and development tools consistent across machines while maintaining a simple, portable configuration.
 
-## Contents
+## ✿ Aesthetic
 
-| Package | Description |
-|---|---|
-| `zsh` | Zsh configuration, aliases, and shell initialization |
-| `starship` | Custom Sakura-themed terminal prompt |
-| `nvim` | Neovim configuration powered by LazyVim |
+**Sakura-inspired terminal theme**
 
-## Preview
+| Color | Hex |
+| --- | --- |
+| Sakura | `#D995A6` |
+| Petal | `#F0C5CE` |
+| Cream | `#E9D9D5` |
+| Wisteria | `#B99AC8` |
+| Moss | `#A8B99A` |
+| Muted | `#827681` |
+| Red | `#C97986` |
 
-- **Shell:** Zsh
-- **Prompt:** Starship
-- **Editor:** Neovim + LazyVim
-- **Theme:** Sakura
-- **Font:** JetBrainsMono Nerd Font
-- **Dotfile manager:** GNU Stow
-
-## Repository structure
+## ✿ Repository Structure
 
 ```text
 dotfiles/
-├── .gitignore
-├── README.md
-├── zsh/
-│   └── .zshrc
+├── nvim/
+│   └── .config/
+│       └── nvim/
+│           ├── colors/
+│           ├── lua/
+│           ├── init.lua
+│           ├── lazy-lock.json
+│           ├── lazyvim.json
+│           └── stylua.toml
+│
 ├── starship/
 │   └── .config/
 │       └── starship.toml
-└── nvim/
-    └── .config/
-        └── nvim/
-            ├── init.lua
-            ├── lazy-lock.json
-            ├── lazyvim.json
-            ├── colors/
-            ├── lua/
-            │   ├── config/
-            │   └── plugins/
-            └── stylua.toml
+│
+├── zsh/
+│   └── .zshrc
+│
+├── .gitignore
+└── README.md
 ```
 
-## Requirements
+## ✿ What's Included
 
-The following applications are required:
+### 1. Zsh + Oh My Zsh
+
+My primary shell is Zsh, configured with Oh My Zsh.
+
+**Plugins:**
+
+- `git` — Git aliases and shortcuts.
+- `zsh-autosuggestions` — Suggest commands from history.
+- `zsh-syntax-highlighting` — Highlight commands as you type.
+
+### 2. Starship
+
+A fast, customizable shell prompt.
+
+Features:
+
+- Custom Sakura color palette.
+- Personal prompt identity: `✿ O>H>I>S>S>A>N>E`.
+- Current directory.
+- Git branch and working-tree status.
+- Command execution time.
+- Different indicators for successful and failed commands.
+
+Configuration: `starship/.config/starship.toml`
+
+### 3. eza
+
+A modern replacement for `ls`, with icons and directory grouping.
+
+| Alias | Command |
+| --- | --- |
+| `ls` | List files with icons |
+| `ll` | Detailed listing, including hidden files |
+| `la` | Show all files |
+| `lt` | Tree view, depth 2 |
+
+Custom Sakura-inspired file colors are configured through `EZA_COLORS`.
+
+### 4. Fastfetch
+
+Displays system information when opening a new terminal.
+
+### 5. Zoxide
+
+A smarter replacement for `cd`.
+
+Zoxide learns which directories I visit and lets me jump to them using partial names.
+
+| Command | Description |
+| --- | --- |
+| `z libft` | Jump to a frequently visited directory |
+| `z CommonCore` | Jump to a matching directory |
+| `z -` | Return to the previous directory |
+| `zi` | Interactive directory picker |
+| `zz` | Shortcut for `zi` |
+
+Zoxide maintains a separate directory database on each machine.
+
+### 6. fzf
+
+A command-line fuzzy finder.
+
+Used with Zoxide for interactive directory navigation.
+
+Useful shortcuts:
+
+| Shortcut | Description |
+| --- | --- |
+| `Ctrl + R` | Search command history |
+| `Ctrl + T` | Search files |
+| `Alt + C` | Interactive directory navigation |
+
+### 7. Neovim + LazyVim
+
+My Neovim configuration is managed inside `nvim/.config/nvim`.
+
+Includes:
+
+- LazyVim configuration.
+- Custom Lua configuration.
+- Keymaps and editor options.
+- Plugin lockfile.
+- Custom colors directory.
+- Formatting configuration with StyLua.
+
+## ✿ Installation
+
+### Requirements
+
+Install the tools separately on each machine:
 
 - Git
-- GNU Stow
 - Zsh
+- Oh My Zsh
+- zsh-autosuggestions
+- zsh-syntax-highlighting
 - Starship
 - eza
+- Fastfetch
+- Zoxide
+- fzf
 - Neovim
-- GitHub account (for syncing)
 
 A Nerd Font is recommended for terminal icons. I use JetBrainsMono Nerd Font.
 
-### Install dependencies on Ubuntu
-
-```bash
-sudo apt update
-sudo apt install git stow zsh neovim
-```
-
-Install the following separately using their official instructions:
-
-- [Starship](https://starship.rs/)
-- [eza](https://eza.rocks/)
-- [JetBrainsMono Nerd Font](https://www.nerdfonts.com/font-downloads)
-
-Neovim plugins may require additional dependencies depending on the plugins being used.
-
-## Installation
-
 ### 1. Clone the repository
-
-Using SSH:
 
 ```bash
 git clone git@github.com:hissaneomaradam/dotfiles.git ~/dotfiles
 ```
 
-Or using HTTPS:
-
-```bash
-git clone https://github.com/hissaneomaradam/dotfiles.git ~/dotfiles
-```
-
 ### 2. Back up existing configurations
 
-Before applying Stow, back up any existing configurations that conflict with the repository.
-
-For example:
+Before creating symlinks, preserve existing configurations:
 
 ```bash
-mkdir -p ~/dotfiles-backup
+mkdir -p ~/.dotfiles-backup ~/.config
 
-[ ! -e ~/.zshrc ] || mv ~/.zshrc ~/dotfiles-backup/
-[ ! -e ~/.config/starship.toml ] || mv ~/.config/starship.toml ~/dotfiles-backup/
-[ ! -e ~/.config/nvim ] || mv ~/.config/nvim ~/dotfiles-backup/
+[ ! -e ~/.zshrc ] || mv ~/.zshrc ~/.dotfiles-backup/zshrc
+[ ! -e ~/.config/starship.toml ] || mv ~/.config/starship.toml ~/.dotfiles-backup/starship.toml
+[ ! -e ~/.config/nvim ] || mv ~/.config/nvim ~/.dotfiles-backup/nvim
 ```
 
-### 3. Apply configurations
-
-Navigate to the repository:
+### 3. Create symbolic links
 
 ```bash
-cd ~/dotfiles
+ln -s ~/dotfiles/zsh/.zshrc ~/.zshrc
+
+ln -s ~/dotfiles/starship/.config/starship.toml \
+    ~/.config/starship.toml
+
+ln -s ~/dotfiles/nvim/.config/nvim \
+    ~/.config/nvim
 ```
 
-Apply all packages:
-
-```bash
-stow zsh starship nvim
-```
-
-GNU Stow creates symbolic links in the home directory pointing to the configurations inside this repository.
-
-### 4. Reload the shell
+### 4. Reload Zsh
 
 ```bash
 source ~/.zshrc
 ```
 
-Launch Neovim:
+The configurations now point directly to the files in this repository.
+
+## ✿ Git Workflow
+
+The `.zshrc` includes a custom `dot` function to manage the repository.
 
 ```bash
-nvim
+dot "Update configuration"
 ```
 
-LazyVim will initialize its plugins. The first launch may take some time.
+It automatically:
 
-## Configurations
+1. Changes into `~/dotfiles`.
+2. Displays Git status.
+3. Displays the current diff.
+4. Stages changes.
+5. Creates a commit using the supplied message.
+6. Pushes changes to GitHub.
 
-### Zsh
-
-**Repository location:**
-
-```text
-zsh/.zshrc
-```
-
-**Installed location:**
-
-```text
-~/.zshrc
-```
-
-Contains:
-
-- Shell initialization
-- Custom aliases
-- eza integration
-- Starship initialization
-
-Reload:
-
-```bash
-source ~/.zshrc
-```
-
-### Starship
-
-**Repository location:**
-
-```text
-starship/.config/starship.toml
-```
-
-**Installed location:**
-
-```text
-~/.config/starship.toml
-```
-
-Features:
-
-- Custom Sakura color palette
-- Git branch and status information
-- Directory navigation display
-- Command execution duration
-- Custom prompt symbols
-
-### Neovim / LazyVim
-
-**Repository location:**
-
-```text
-nvim/.config/nvim/
-```
-
-**Installed location:**
-
-```text
-~/.config/nvim/
-```
-
-Powered by [LazyVim](https://www.lazyvim.org/).
-
-Includes:
-
-- Custom Sakura colorscheme
-- Personalized dashboard and ASCII artwork
-- Custom keybindings
-- Editor options
-- Autocommands
-- Plugin configurations
-- 42 header integration
-- Plugin version lockfile
-
-Launch:
-
-```bash
-nvim
-```
-
-## Managing dotfiles
-
-### Edit configurations
-
-Because Stow creates symbolic links, editing a configuration through its normal home-directory path also changes the file in this repository.
-
-For example:
-
-```bash
-nvim ~/.zshrc
-nvim ~/.config/starship.toml
-nvim ~/.config/nvim
-```
-
-### Check changes
+You can also manage changes manually:
 
 ```bash
 cd ~/dotfiles
 
 git status
-git diff
-```
-
-### Commit and push changes
-
-```bash
 git add .
-git commit -m "Update configurations"
+git commit -m "Update configuration"
 git push
 ```
 
-### Pull changes from GitHub
+## ✿ Synchronization
+
+The same repository is used on both my personal laptop and school computer.
+
+**Personal laptop → GitHub → School computer**
+
+When changing configurations:
+
+On the machine where the changes were made:
+
+```bash
+cd ~/dotfiles
+git add .
+git commit -m "Update configuration"
+git push
+```
+
+On the other machine:
 
 ```bash
 cd ~/dotfiles
 git pull
 ```
 
-### Reapply a package
+Because the configurations are symlinked, changes pulled into the repository become active immediately.
+
+Reload Zsh after updating its configuration:
 
 ```bash
-stow -R nvim
+source ~/.zshrc
 ```
 
-### Remove a package's symlinks
+Restart Neovim if its configuration was updated.
 
-```bash
-stow -D nvim
-```
+## ✿ Important Notes
 
-Replace `nvim` with `zsh` or `starship` as needed.
-
-Removing symlinks does not delete the package from the repository.
-
-## Syncing across machines
-
-On another Linux machine:
-
-1. Install the required applications.
-2. Clone this repository.
-3. Back up conflicting configurations.
-4. Run GNU Stow.
-
-```bash
-git clone git@github.com:hissaneomaradam/dotfiles.git ~/dotfiles
-
-cd ~/dotfiles
-
-stow zsh starship nvim
-```
-
-Your configurations will be linked into your home directory.
+- Configurations are shared through Git; installed applications and binaries are not.
+- Each machine needs its own installation of the required tools.
+- Zoxide's directory history is local to each machine.
+- fzf is required for the interactive `zz` picker.
+- Nerd Fonts should be installed on the host terminal for proper icon rendering.
+- Existing configurations should be backed up before linking.
+- Machine-specific paths and settings should be avoided in shared configuration files.
 
 ---
 
-**Made with ✿ and a little bit of terminal obsession.**
+<p align="center">
+  <strong>✿ O>H>I>S>S>A>N>E</strong><br>
+  <sub>Once a Dalton, always a Dalton.</sub>
+</p>

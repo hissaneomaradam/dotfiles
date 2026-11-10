@@ -135,3 +135,8 @@ dot() {
         git push
     )
 }
+
+# Zoxide - smarter cd
+eval "$(zoxide init zsh)"
+alias zz="zi"
+

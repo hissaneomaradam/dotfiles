@@ -123,7 +123,7 @@ if command -v starship >/dev/null 2>&1; then
     eval "$(starship init zsh)"
 fi
 # Dotfiles Git workflow
-dotpush() {
+dot() {
     (
         cd ~/dotfiles || return
 

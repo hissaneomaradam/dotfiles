@@ -61,3 +61,14 @@ dot() {
         git push
     )
 }
+# ─── Zoxide ───
+if command -v zoxide &>/dev/null; then
+    eval "$(zoxide init zsh)"
+    alias zz="zi"
+fi
+
+# ─── Neovim ───
+alias v="nvim"
+alias vim="nvim"
+alias vi="nvim"
+alias nv="nvim"

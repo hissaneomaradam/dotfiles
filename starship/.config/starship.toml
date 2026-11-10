@@ -1,0 +1,40 @@
+add_newline = true
+palette = "sakura"
+
+format = """
+[✿](bold sakura) [O>H>I>S>S>A>N>E](bold petal) $directory$git_branch$git_status
+$character"""
+
+[palettes.sakura]
+sakura = "#D995A6"
+petal = "#F0C5CE"
+cream = "#E9D9D5"
+plum = "#B99AC8"
+moss = "#A8B99A"
+muted = "#827681"
+red = "#C97986"
+
+[directory]
+style = "bold moss"
+format = "[$path]($style) "
+truncation_length = 3
+truncation_symbol = "…/"
+
+[git_branch]
+symbol = " "
+style = "plum"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+style = "sakura"
+format = "([$all_status$ahead_behind]($style))"
+
+[character]
+success_symbol = "[❯](bold sakura)"
+error_symbol = "[❯](bold red)"
+vimcmd_symbol = "[❮](bold moss)"
+
+[cmd_duration]
+min_time = 2000
+style = "muted"
+format = "took [$duration]($style) "

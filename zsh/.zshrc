@@ -122,3 +122,5 @@ export EZA_COLORS="di=38;2;217;149;166:ln=38;2;145;185;181:ex=38;2;168;185;154:*
 if command -v starship >/dev/null 2>&1; then
     eval "$(starship init zsh)"
 fi
+# Dotfiles tree
+alias tree="eza --tree --all --level=4"

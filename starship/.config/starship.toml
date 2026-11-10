@@ -2,7 +2,7 @@ add_newline = true
 palette = "sakura"
 
 format = """
-[✿](bold sakura) [O>H>I>S>S>A>N>E](bold petal) $directory$git_branch$git_status
+[✿](bold sakura) [O>H>I>S>S>A>N>E](bold petal) [✿](bold sakura) $directory$git_branch$git_status
 $character"""
 
 [palettes.sakura]

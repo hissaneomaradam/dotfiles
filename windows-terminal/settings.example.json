@@ -1,0 +1,145 @@
+
+{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "actions": [
+        {
+            "command": "toggleFocusMode",
+            "id": "User.toggleFocusMode"
+        }
+    ],
+    "alwaysShowTabs": false,
+    "copyFormatting": "none",
+    "copyOnSelect": false,
+    "defaultProfile": "{a2d9f471-8c36-4b21-9e57-1f5a6b8c3d20}",
+    "experimental.useBackgroundImageForWindow": false,
+    "initialCols": 120,
+    "initialRows": 32,
+    "keybindings": [
+        {
+            "id": "copy",
+            "keys": "ctrl+c"
+        },
+        {
+            "id": "prevTab",
+            "keys": "ctrl+shift+tab"
+        },
+        {
+            "id": "nextTab",
+            "keys": "ctrl+tab"
+        },
+        {
+            "id": "paste",
+            "keys": "ctrl+v"
+        },
+        {
+            "id": "find",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "id": "closeTab",
+            "keys": "ctrl+shift+w"
+        },
+        {
+            "id": "toggleFullscreen",
+            "keys": "alt+enter"
+        },
+        {
+            "id": "newTab",
+            "keys": "ctrl+shift+t"
+        },
+        {
+            "id": "User.toggleFocusMode",
+            "keys": "ctrl+shift+space"
+        }
+    ],
+    "launchMode": "focus",
+    "newTabMenu": [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
+    "profiles": {
+        "defaults": {
+            "adjustIndistinguishableColors": "always",
+            "antialiasingMode": "cleartype",
+            "bellStyle": "none",
+            "cursorHeight": 25,
+            "cursorShape": "bar",
+            "font": {
+                "face": "JetBrainsMono Nerd Font",
+                "size": 12,
+                "weight": "medium"
+            },
+            "historySize": 10000,
+            "intenseTextStyle": "bright",
+            "opacity": 86,
+            "padding": "12",
+            "scrollbarState": "hidden",
+            "snapOnInput": true,
+            "useAcrylic": true
+        },
+        "list": [
+            {
+                "colorScheme": "Sakura Midnight",
+                "commandline": "wsl.exe -d Ubuntu",
+                "cursorColor": "#D995A6",
+                "cursorShape": "bar",
+                "font": {
+                    "face": "JetBrainsMono Nerd Font",
+                    "size": 12,
+                    "weight": "medium"
+                },
+                "guid": "{a2d9f471-8c36-4b21-9e57-1f5a6b8c3d20}",
+                "hidden": false,
+                "icon": "\u273f",
+                "name": "\u273f Ubuntu",
+                "opacity": 86,
+                "padding": "12",
+                "useAcrylic": true
+            },
+            {
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": false,
+                "name": "Windows PowerShell"
+            },
+            {
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": false,
+                "name": "Command Prompt"
+            }
+        ]
+    },
+    "schemes": [
+        {
+            "background": "#111018",
+            "black": "#17141D",
+            "blue": "#9D9BCB",
+            "brightBlack": "#827681",
+            "brightBlue": "#B5B2E3",
+            "brightCyan": "#B0D7D2",
+            "brightGreen": "#C2D5AD",
+            "brightPurple": "#D4B2E0",
+            "brightRed": "#E69AA8",
+            "brightWhite": "#FFFFFF",
+            "brightYellow": "#F0D2A4",
+            "cursorColor": "#D995A6",
+            "cyan": "#91B8B5",
+            "foreground": "#E9D9D5",
+            "green": "#A8B99A",
+            "name": "Sakura Midnight",
+            "purple": "#B99AC8",
+            "red": "#C97986",
+            "selectionBackground": "#493442",
+            "white": "#E9D9D5",
+            "yellow": "#D9B98C"
+        }
+    ],
+    "showTabsInTitlebar": true,
+    "showTerminalTitleInTitlebar": false,
+    "tabWidthMode": "compact",
+    "theme": "dark",
+    "themes": [],
+    "warning.confirmCloseAllTabs": false
+}
+

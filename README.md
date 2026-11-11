@@ -1,14 +1,18 @@
-# ✿ Dotfiles
+# ✿ Sakura Dotfiles
 
-My personal Linux development environment, managed with Git and shared between my Ubuntu WSL laptop and 1337 school computer.
+A personal, Sakura-inspired development environment built around a clean terminal, a customized shell, and a personalized Neovim setup.
 
-The goal is to keep my terminal and development tools consistent across machines while maintaining a simple, portable configuration.
+Designed to stay consistent across my machines: Ubuntu on WSL2, my personal Linux environments, and 1337 school computers.
 
-## ✿ Aesthetic
+**One configuration. Multiple machines. One Sakura aesthetic.**
 
-**Sakura-inspired terminal theme**
+---
 
-| Color | Hex |
+## ✿ Preview
+
+### Color palette
+
+| Name | Hex |
 | --- | --- |
 | Sakura | `#D995A6` |
 | Petal | `#F0C5CE` |
@@ -17,252 +21,342 @@ The goal is to keep my terminal and development tools consistent across machines
 | Moss | `#A8B99A` |
 | Muted | `#827681` |
 | Red | `#C97986` |
+| Cyan | `#91B8B5` |
+| Background | `#111018` |
+| Selection | `#493442` |
 
-## ✿ Repository Structure
+---
+
+## ✿ Repository structure
 
 ```text
 dotfiles/
+├── bat/
+│   └── .config/
+│       └── bat/
+│           ├── config
+│           └── themes/
+│               └── Sakura.tmTheme
+├── fastfetch/
+│   └── .config/
+│       └── fastfetch/
+│           ├── ascii/
+│           │   └── txt.txt
+│           └── config.jsonc
 ├── nvim/
 │   └── .config/
 │       └── nvim/
-│           ├── colors/
-│           ├── lua/
-│           ├── init.lua
-│           ├── lazy-lock.json
-│           ├── lazyvim.json
-│           └── stylua.toml
-│
 ├── starship/
 │   └── .config/
 │       └── starship.toml
-│
+├── windows-terminal/
+│   ├── README.md
+│   ├── sakura-midnight.json
+│   └── settings.json
 ├── zsh/
 │   └── .zshrc
-│
 ├── .gitignore
 └── README.md
 ```
 
-## ✿ What's Included
+Each Linux configuration is organized as a GNU Stow package. This keeps the repository structured while allowing configurations to be linked into the home directory.
 
-### 1. Zsh + Oh My Zsh
+---
 
-My primary shell is Zsh, configured with Oh My Zsh.
+## ✿ Environment
 
-**Plugins:**
-
-- `git` — Git aliases and shortcuts.
-- `zsh-autosuggestions` — Suggest commands from history.
-- `zsh-syntax-highlighting` — Highlight commands as you type.
-
-### 2. Starship
-
-A fast, customizable shell prompt.
-
-Features:
-
-- Custom Sakura color palette.
-- Personal prompt identity: `✿ O>H>I>S>S>A>N>E`.
-- Current directory.
-- Git branch and working-tree status.
-- Command execution time.
-- Different indicators for successful and failed commands.
-
-Configuration: `starship/.config/starship.toml`
-
-### 3. eza
-
-A modern replacement for `ls`, with icons and directory grouping.
-
-| Alias | Command |
+| Component | Tool |
 | --- | --- |
-| `ls` | List files with icons |
-| `ll` | Detailed listing, including hidden files |
-| `la` | Show all files |
-| `lt` | Tree view, depth 2 |
+| Main environment | Ubuntu / WSL2 |
+| Shell | Zsh |
+| Shell framework | Oh My Zsh |
+| Prompt | Starship |
+| Editor | Neovim / LazyVim |
+| Terminal | Windows Terminal |
+| Font | JetBrainsMono Nerd Font |
+| File listing | Eza |
+| Navigation | Zoxide |
+| Fuzzy finder | FZF |
+| Syntax viewer | Bat |
+| System information | Fastfetch |
+| Dotfile management | GNU Stow |
 
-Custom Sakura-inspired file colors are configured through `EZA_COLORS`.
+The configuration is designed to be portable, but some components may need small adjustments depending on the Linux distribution, installed tools, fonts, and terminal.
 
-### 4. Fastfetch
+---
 
-Displays system information when opening a new terminal.
+## ✿ Configurations
 
-### 5. Zoxide
+### Zsh
 
-A smarter replacement for `cd`.
+- Oh My Zsh integration
+- Git, autosuggestions, and syntax-highlighting plugins
+- Sakura-colored Eza output
+- Custom aliases and Git shortcuts
+- Zoxide navigation
+- FZF integration
+- Starship prompt initialization
+- Fastfetch on startup
+- Dotfiles review workflow
 
-Zoxide learns which directories I visit and lets me jump to them using partial names.
+### Starship
 
-| Command | Description |
+A custom prompt configuration with a minimal Sakura-inspired appearance.
+
+### Eza
+
+Enhanced directory listing with icons and custom colors.
+
+| Alias | Description |
 | --- | --- |
-| `z libft` | Jump to a frequently visited directory |
-| `z CommonCore` | Jump to a matching directory |
-| `z -` | Return to the previous directory |
-| `zi` | Interactive directory picker |
-| `zz` | Shortcut for `zi` |
+| `ls` | Eza listing |
+| `ll` | Detailed listing |
+| `la` | Show hidden files |
+| `lt` | Shallow tree |
+| `tree` | Tree view |
+| `ree` | Detailed tree, excluding `.git` |
 
-Zoxide maintains a separate directory database on each machine.
+### FZF
 
-### 6. fzf
+- Sakura color scheme
+- Rounded borders
+- Reverse layout
+- 80% terminal height
+- Zsh integration
 
-A command-line fuzzy finder.
+### Bat
 
-Used with Zoxide for interactive directory navigation.
+- Custom Sakura syntax theme
+- Line numbers
+- Git change indicators
+- Header information
+- Italic text
 
-Useful shortcuts:
+### Fastfetch
 
-| Shortcut | Description |
+- Custom ASCII logo
+- Hardware and software information
+- System information
+
+Some system-specific modules may need adjustment outside WSL2.
+
+### Neovim
+
+- LazyVim-based configuration
+- Custom Sakura colorscheme
+- Personal Lua configuration and plugins
+
+### Windows Terminal
+
+An optional Windows-specific configuration featuring:
+
+- Sakura Midnight color scheme
+- JetBrainsMono Nerd Font
+- Acrylic background
+- Custom opacity and cursor
+- Ubuntu profile
+- Custom keyboard shortcuts
+
+The reusable color scheme is provided separately in `windows-terminal/sakura-midnight.json`. You do not need to replace your entire Windows Terminal settings file to use it.
+
+---
+
+## ✿ Useful aliases
+
+| Alias | Description |
 | --- | --- |
-| `Ctrl + R` | Search command history |
-| `Ctrl + T` | Search files |
-| `Alt + C` | Interactive directory navigation |
+| `v`, `vim`, `vi`, `nv` | Open Neovim |
+| `dots` | Navigate to dotfiles |
+| `croot` | Navigate to 1337 directory |
+| `..`, `...`, `....` | Navigate up directories |
+| `gs` | Git status |
+| `ga` | Git add |
+| `gc` | Git commit |
+| `gp` | Git push |
+| `gd` | Git diff |
+| `gl` | Git graph log |
+| `z` | Zoxide directory search |
+| `zz` | Interactive Zoxide search |
 
-### 7. Neovim + LazyVim
-
-My Neovim configuration is managed inside `nvim/.config/nvim`.
-
-Includes:
-
-- LazyVim configuration.
-- Custom Lua configuration.
-- Keymaps and editor options.
-- Plugin lockfile.
-- Custom colors directory.
-- Formatting configuration with StyLua.
+---
 
 ## ✿ Installation
 
-### Requirements
+### 1. Requirements
 
-Install the tools separately on each machine:
+Install the tools you want to use on your machine:
 
 - Git
 - Zsh
+- GNU Stow
+
+The other tools are optional, but the corresponding features require them:
+
 - Oh My Zsh
-- zsh-autosuggestions
-- zsh-syntax-highlighting
 - Starship
-- eza
+- Eza
+- Bat
 - Fastfetch
+- FZF
 - Zoxide
-- fzf
 - Neovim
 
-A Nerd Font is recommended for terminal icons. I use JetBrainsMono Nerd Font.
+The Zsh configuration checks for most optional commands before initializing them. Oh My Zsh plugins must be installed separately.
 
-### 1. Clone the repository
+### 2. Clone the repository
+
+Using SSH:
 
 ```bash
 git clone git@github.com:hissaneomaradam/dotfiles.git ~/dotfiles
 ```
 
-### 2. Back up existing configurations
-
-Before creating symlinks, preserve existing configurations:
+Or using HTTPS:
 
 ```bash
-mkdir -p ~/.dotfiles-backup ~/.config
-
-[ ! -e ~/.zshrc ] || mv ~/.zshrc ~/.dotfiles-backup/zshrc
-[ ! -e ~/.config/starship.toml ] || mv ~/.config/starship.toml ~/.dotfiles-backup/starship.toml
-[ ! -e ~/.config/nvim ] || mv ~/.config/nvim ~/.dotfiles-backup/nvim
+git clone https://github.com/hissaneomaradam/dotfiles.git ~/dotfiles
 ```
 
-### 3. Create symbolic links
+### 3. Back up existing configurations
+
+Before linking anything, back up existing configuration files and directories that could conflict with Stow.
+
+For example:
 
 ```bash
-ln -s ~/dotfiles/zsh/.zshrc ~/.zshrc
-
-ln -s ~/dotfiles/starship/.config/starship.toml \
-    ~/.config/starship.toml
-
-ln -s ~/dotfiles/nvim/.config/nvim \
-    ~/.config/nvim
+mkdir -p ~/dotfiles-backup
+cp -a ~/.zshrc ~/dotfiles-backup/ 2>/dev/null || true
 ```
 
-### 4. Reload Zsh
+Also check `~/.config` for existing `nvim`, `starship.toml`, `fastfetch`, and `bat` configurations.
+
+### 4. Link configurations
+
+From the repository directory:
+
+```bash
+cd ~/dotfiles
+
+stow -t "$HOME" zsh
+stow -t "$HOME" starship
+stow -t "$HOME" fastfetch
+stow -t "$HOME" nvim
+stow -t "$HOME" bat
+```
+
+Stow creates symbolic links from the repository into your home directory.
+
+If Stow reports a conflict, inspect the existing file before moving or replacing it. Do not blindly overwrite personal configurations.
+
+### 5. Reload Zsh
 
 ```bash
 source ~/.zshrc
 ```
 
-The configurations now point directly to the files in this repository.
+Restart your terminal if necessary.
 
-## ✿ Git Workflow
+### 6. Windows Terminal (optional)
 
-The `.zshrc` includes a custom `dot` function to manage the repository.
+Windows Terminal configuration is separate from GNU Stow.
 
-```bash
-dot "Update configuration"
-```
+To use Sakura Midnight:
 
-It automatically:
+1. Open Windows Terminal.
+2. Go to Settings.
+3. Select **Open JSON file**.
+4. Add the contents of `windows-terminal/sakura-midnight.json` to your existing `schemes` array.
+5. Save the file.
+6. Select **Sakura Midnight** in your profile's Appearance settings.
 
-1. Changes into `~/dotfiles`.
-2. Displays Git status.
-3. Displays the current diff.
-4. Stages changes.
-5. Creates a commit using the supplied message.
-6. Pushes changes to GitHub.
+See [`windows-terminal/README.md`](windows-terminal/README.md) for details.
 
-You can also manage changes manually:
+---
+
+## ✿ Syncing across devices
+
+This repository is public and intended to be shared across machines.
+
+### First machine
+
+Make your changes inside `~/dotfiles`, then review them:
 
 ```bash
 cd ~/dotfiles
-
 git status
-git add .
-git commit -m "Update configuration"
-git push
+git diff
 ```
 
-## ✿ Synchronization
-
-The same repository is used on both my personal laptop and school computer.
-
-**Personal laptop → GitHub → School computer**
-
-When changing configurations:
-
-On the machine where the changes were made:
+Add, commit, and push the changes you want to share:
 
 ```bash
-cd ~/dotfiles
 git add .
-git commit -m "Update configuration"
+git commit -m "Update dotfiles"
 git push
 ```
 
-On the other machine:
+### Another machine
+
+Pull the latest changes:
 
 ```bash
 cd ~/dotfiles
 git pull
 ```
 
-Because the configurations are symlinked, changes pulled into the repository become active immediately.
+Stow links already point to the repository, so changes to linked files become available immediately. Reload the relevant application or shell when needed.
 
-Reload Zsh after updating its configuration:
+### Important
 
-```bash
-source ~/.zshrc
-```
-
-Restart Neovim if its configuration was updated.
-
-## ✿ Important Notes
-
-- Configurations are shared through Git; installed applications and binaries are not.
-- Each machine needs its own installation of the required tools.
-- Zoxide's directory history is local to each machine.
-- fzf is required for the interactive `zz` picker.
-- Nerd Fonts should be installed on the host terminal for proper icon rendering.
-- Existing configurations should be backed up before linking.
-- Machine-specific paths and settings should be avoided in shared configuration files.
+Avoid editing the same configuration independently on multiple machines without syncing first. Pull before making changes and resolve Git conflicts before pushing.
 
 ---
 
-<p align="center">
-  <strong>✿ O>H>I>S>S>A>N>E</strong><br>
-  <sub>Once a Dalton, always a Dalton.</sub>
-</p>
+## ✿ Dotfiles workflow
+
+The `dot` function provides a quick repository review:
+
+```bash
+dot
+```
+
+It:
+
+1. Enters the dotfiles repository.
+2. Displays Git status.
+3. Displays tracked changes.
+4. Lists untracked files.
+
+It does **not** stage, commit, or push anything. Review the changes and run Git commands manually when you're ready.
+
+---
+
+## ✿ Removing configurations
+
+GNU Stow can unlink a package without deleting the files in the repository:
+
+```bash
+cd ~/dotfiles
+stow -D -t "$HOME" zsh
+```
+
+Replace `zsh` with the package you want to unlink.
+
+---
+
+## ✿ Philosophy
+
+- Keep the environment clean and minimal.
+- Keep configurations portable across machines.
+- Prefer customization over unnecessary dependencies.
+- Maintain a consistent Sakura aesthetic.
+- Make development comfortable and productive.
+- Keep the setup suitable for development and 1337 Common Core work.
+
+---
+
+## ✿ Credits
+
+Built and maintained by [@hissaneomaradam](https://github.com/hissaneomaradam).
+
+**Once a Dalton, always a Dalton.** ✿

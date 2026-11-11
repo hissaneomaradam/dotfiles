@@ -1,0 +1,143 @@
+
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "file",
+    "source": "~/.config/fastfetch/ascii/txt.txt",
+    "color": {
+      "1": "white"
+    },
+    "padding": {
+      "top": 5,
+      "left": 3
+    }
+  },
+  "modules": [
+    "break",
+    {
+      "type": "custom",
+      "format": "\u001b[90m┌──────────────────────Hardware──────────────────────┐"
+    },
+    {
+      "type": "host",
+      "key": "󰌢  PC",
+      "keyColor": "green"
+    },
+    {
+      "type": "cpu",
+      "key": "│ ├󰻠 ",
+      "keyColor": "green"
+    },
+    {
+      "type": "gpu",
+      "key": "│ ├󰍹 ",
+      "keyColor": "green"
+    },
+    {
+      "type": "memory",
+      "key": "│ ├󰑭 ",
+      "keyColor": "green"
+    },
+    {
+      "type": "disk",
+      "key": "└ └󰋊 ",
+      "keyColor": "green"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[90m└────────────────────────────────────────────────────┘"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "\u001b[90m┌──────────────────────Software──────────────────────┐"
+    },
+    {
+      "type": "os",
+      "key": "  OS",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "kernel",
+      "key": "│ ├󰌽 ",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "bios",
+      "key": "│ ├󰖡 ",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "packages",
+      "key": "│ ├󰏗 ",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "shell",
+      "key": "└ └󰞷 ",
+      "keyColor": "yellow"
+    },
+    "break",
+    {
+      "type": "de",
+      "key": "󰧨  DE",
+      "keyColor": "blue"
+    },
+    {
+      "type": "lm",
+      "key": "│ ├󰍁 ",
+      "keyColor": "blue"
+    },
+    {
+      "type": "command",
+      "text": "if [ -r /mnt/wslg/versions.txt ]; then head -n 1 /mnt/wslg/versions.txt; elif grep -qi microsoft /proc/sys/kernel/osrelease 2>/dev/null; then printf 'WSL (no WSLg)'; else printf 'Native Linux'; fi",
+      "key": "│ ├󱂬 ",
+      "keyColor": "blue"
+    },
+    {
+      "type": "wmtheme",
+      "key": "│ ├󰉦 ",
+      "keyColor": "blue"
+    },
+    {
+      "type": "terminal",
+      "key": "└ └󰆍 ",
+      "keyColor": "blue"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[90m└────────────────────────────────────────────────────┘"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "\u001b[90m┌────────────────────Uptime / Age / DT────────────────────┐"
+    },
+    {
+      "type": "command",
+      "key": "  ›  Root Age  ",
+      "keyColor": "magenta",
+      "text": "birth_install=$(stat -c %W / 2>/dev/null); if [ -n \"$birth_install\" ] && [ \"$birth_install\" -gt 0 ] 2>/dev/null; then current=$(date +%s); days=$(((current - birth_install) / 86400)); printf '%s days' \"$days\"; else printf 'Unavailable'; fi"
+    },
+    {
+      "type": "uptime",
+      "key": "  ›  Uptime  ",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "datetime",
+      "key": "  ›  DateTime  ",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[90m└─────────────────────────────────────────────────────────┘"
+    },
+    {
+      "type": "colors",
+      "paddingLeft": 2,
+      "symbol": "circle"
+    }
+  ]
+}
+

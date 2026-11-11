@@ -1,0 +1,25 @@
+
+{
+    "name": "Sakura Midnight",
+    "background": "#111018",
+    "foreground": "#E9D9D5",
+    "cursorColor": "#D995A6",
+    "selectionBackground": "#493442",
+    "black": "#17141D",
+    "red": "#C97986",
+    "green": "#A8B99A",
+    "yellow": "#D9B98C",
+    "blue": "#9D9BCB",
+    "purple": "#B99AC8",
+    "cyan": "#91B8B5",
+    "white": "#E9D9D5",
+    "brightBlack": "#827681",
+    "brightRed": "#E69AA8",
+    "brightGreen": "#C2D5AD",
+    "brightYellow": "#F0D2A4",
+    "brightBlue": "#B5B2E3",
+    "brightPurple": "#D4B2E0",
+    "brightCyan": "#B0D7D2",
+    "brightWhite": "#FFFFFF"
+}
+
